@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: HouseDancing
+    m_ConditionEvent: houseDancing
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3266030053318505351}
@@ -120,19 +120,19 @@ AnimatorController:
   m_Name: ely_k_atienza_Animator
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: HouseDancing
+  - m_Name: houseDancing
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: MacarenaDance
+  - m_Name: macarenaDance
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: WaveHipHop
+  - m_Name: waveHipHop
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -212,7 +212,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: WaveHipHop
+    m_ConditionEvent: waveHipHop
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1100179211584720435}
@@ -237,7 +237,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: MacarenaDance
+    m_ConditionEvent: macarenaDance
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2464472177673895719}
