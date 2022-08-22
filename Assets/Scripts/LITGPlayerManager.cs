@@ -1,11 +1,13 @@
+using System;
 using UnityEngine;
 
 public class LITGPlayerManager : MonoBehaviour
 {
-    [SerializeField] private LITGGameManager gameManager;
-    [SerializeField] private Animator animator;
-    [SerializeField] private string currentPlayerAnimParameter;
-    
+    [SerializeField] protected LITGGameManager gameManager;
+    [SerializeField] protected Animator animator;
+    [SerializeField] protected string currentPlayerAnimParameter;
+    [SerializeField] protected bool isUiPlayer;
+
     private void Start()
     {
         gameManager = FindObjectOfType<LITGGameManager>().GetComponent<LITGGameManager>();
@@ -13,23 +15,41 @@ public class LITGPlayerManager : MonoBehaviour
         if (gameManager == null)
         {
             Debug.LogError("game manager is null");
+
             return;
         }
 
-        if (gameManager.IsScene2Loaded())
+        if (gameManager.IsScene2Loaded() && isUiPlayer)
         {
             GetCurrentPlayerAnimParameter();
-            StartPlayerAnimation(currentPlayerAnimParameter);
+            StartPlayerAnimation(null, currentPlayerAnimParameter);
         }
     }
 
-    public void StartPlayerAnimation(string animParameterArg)
+    public void StartPlayerAnimation(string triggerAnimParameter)
     {
-        animator.SetTrigger(animParameterArg);
-        SetCurrenPlayerAnimParameter(animParameterArg);
+        if (triggerAnimParameter != null)
+        {
+            animator.SetTrigger(triggerAnimParameter);
+        }
+        SetCurrenPlayerAnimParameter(triggerAnimParameter);
         GetCurrentPlayerAnimParameter();
     }
-    
+
+    public void StartPlayerAnimation(string boolAnimParameter, string triggerAnimParameter)
+    {
+        if (boolAnimParameter != null) animator.SetBool(boolAnimParameter, true);
+        if (triggerAnimParameter != null || triggerAnimParameter != String.Empty)
+            animator.SetTrigger(triggerAnimParameter);
+        SetCurrenPlayerAnimParameter(boolAnimParameter);
+        GetCurrentPlayerAnimParameter();
+    }
+
+    public void StopPlayerAnimation(string boolAnimParameter)
+    {
+        if (boolAnimParameter != null) animator.SetBool(boolAnimParameter, false);
+    }
+
     public void SetCurrenPlayerAnimParameter(string newAnimParameter)
     {
         PlayerPrefs.SetString("AnimParameter", newAnimParameter);
